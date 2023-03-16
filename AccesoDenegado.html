@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Acceso Denegado</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        .panel-warning {
+            border-color: #FFC107;
+        }
+         .btn-warning {
+            background-color: #FF8C00;
+            border-color: #FF8C00;
+        }
+
+        .btn-warning:hover {
+            background-color: #FFA500;
+            border-color: #FFA500;
+        }
+
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="container">
+           
+            <hr>
+            <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Acceso Denegado</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="panel panel-warning">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">Lo sentimos, por el momento no puedes ingresar a Transacciones en línea con este tipo de documento.</h4>
+                                </div>
+                                <div class="panel-body">
+                                    <p>El acceso se encuentra restringido a los documentos CC, CE y NIT.</p>
+                                    <p>Por favor, ingresa con un documento válido o contáctanos para más información.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" style="color:white;" class="btn btn-warning">Cerrar Sesión (<span id="temporizador"></span>)</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <footer>
+        <!-- Aquí se incluirán los enlaces a los términos y condiciones, política de privacidad, etc. -->
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script>
+        var segundos = 60;
+        var temporizador = setInterval(function () {
+            $("#temporizador").text(segundos + " segundos");
+            segundos--;
+            if (segundos < 0) {
+                clearInterval(temporizador);
+                cerrarSesion();
+            }
+        }, 1000);
+
+        function cerrarSesion() {
+            window.location.href = "https://prucorporativo.compensar.com/";
+        }
+
+        $(document).ready(function () {
+            // Mostrar la ventana modal
+            $("#myModal").modal({
+                backdrop: "static",
+                keyboard: false
+            });
+        });
+    </script>
+
+    </body>
+</html>
