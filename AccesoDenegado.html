@@ -1,18 +1,25 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Acceso Denegado</title>
+    <title></title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        crossorigin="anonymous" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
     <style>
         .panel-warning {
             border-color: #FFC107;
         }
-         .btn-warning {
-            background-color: #FF8C00;
-            border-color: #FF8C00;
+
+        .btn-warning {
+            background-color: #f60;
+            border-color: #f60;
+            padding-left:1.5rem;
+            padding-right:1.5rem;
         }
 
         .btn-warning:hover {
@@ -20,35 +27,117 @@
             border-color: #FFA500;
         }
 
+        .modal-content {
+  border-radius: 10px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.5);
+}
+        .badge-orange {
+            background-color: #f60;
+            color: white;
+            font-size: 20px;
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 50px;
+        }
+
+        .badge-orange .fa {
+            font-size: 4em;
+        }
+        .modal-header {
+    border-bottom: none;
+}
+.modal-footer {
+    border-top: none;
+}
+
+.modal-body {
+  margin-left:  20px;
+  margin-right:  20px;
+}
+
+.modal-dialog {
+  margin: 0 auto;
+}
+.panel-body {
+  text-align: justify;
+}
+@media (max-width: 576px) {
+    .modal-footer {
+    justify-content: center;
+  }
+  .modal-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .modal-title {
+  margin-top: 1rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-title span {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+  .badge-orange {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  .badge-orange .fa {
+    margin-right: 0.5rem;
+  }
+  .modal-dialog {
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+}
+
     </style>
 </head>
+
 <body>
     <form id="form1" runat="server">
         <div class="container">
-           
+
             <hr>
-            <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title">Acceso Denegado</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+                            <h4 class="modal-title"><span class="badge-orange"><i class="fas fa-exclamation"></i></span>
+                                ¡Hola!</h4>
+
+                            
                         </div>
                         <div class="modal-body">
                             <div class="panel panel-warning">
-                                <div class="panel-heading">
-                                    <h4 class="panel-title">Lo sentimos, por el momento no puedes ingresar a Transacciones en línea con este tipo de documento.</h4>
-                                </div>
+
                                 <div class="panel-body">
-                                    <p>El acceso se encuentra restringido a los documentos CC, CE y NIT.</p>
-                                    <p>Por favor, ingresa con un documento válido o contáctanos para más información.</p>
+                                    <p>Si tu documento es diferente a <b>cédula de ciudadanía, cédula de extranjería</b>
+                                        o <b>NIT</b>,
+                                        por el momento no podrás realizar tus trámites.
+                                        Continúa tu navegación en
+                                        nuestro portal Corporativo y entérate de toda la información que tenemos para
+                                        ti.
+                                        .</p>
                                 </div>
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" onclick="window.location.href='https://prucorporativo.compensar.com/'" style="color:white;" class="btn btn-warning">Finalizar (<span id="temporizador"></span>)</button>
+                            <button type="button" onclick="window.location.href='https://prucorporativo.compensar.com/'"
+                                style="color:white;" class="btn btn-warning">Aceptar</button>
                         </div>
                     </div>
                 </div>
@@ -64,7 +153,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script>
-        var segundos = 60;
+        var segundos = 120;
         var temporizador = setInterval(function () {
             $("#temporizador").text(segundos + " segundos");
             segundos--;
@@ -86,6 +175,6 @@
             });
         });
     </script>
+</body>
 
-    </body>
 </html>
